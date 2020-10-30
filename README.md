@@ -19,9 +19,10 @@ which is in login.ini (line 127), version=0.7.4g
 - Checks clipboard activity periodically.
 - Collects hardware details. (Such as your mac address)
 - Collects background resource usage stats
+- Enable audio/video monitoring (Which is configurable to be optional or mandatory)
 
 It does NOT check browser data
-And it's only running when you open it to do the exam. It's not a rootkit.
+And it's only running when you open it to do the exam. It's not a rootkit, you monkey.
 
 
 
@@ -30,5 +31,9 @@ Windows registry checking --->
 
 (Launcher "utility\WindowsRegistry.class" accesses two values from your current logged in user, one of them is your Documents folder, the other is your Desktop)
 "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", "Personal");
+
 "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", "Desktop");
+
+VM Detection ---> 
+CoMaS-0.7.4g inside "resources"\VMCheck.class and VMCheckTask.class
 
