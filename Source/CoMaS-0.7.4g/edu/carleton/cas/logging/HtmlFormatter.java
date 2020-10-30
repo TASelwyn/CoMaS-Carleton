@@ -30,7 +30,7 @@ class HtmlFormatter extends Formatter {
   }
   
   public String getHead(Handler h) {
-    return "<!DOCTYPE html>\n<head><meta http-equiv=\"refresh\" content=\"30\">\n<style>\ntable { width: 100% }\nth { font:bold 10pt Tahoma; }\ntd { font:normal 10pt Tahoma; }\nh1 {font:normal 11pt Tahoma;}\n</style>\n</head>\n<body>\n<h1>" + 
+    return "<!DOCTYPE html>\n<head><title>CoMaS Logs</title><meta http-equiv=\"refresh\" content=\"30\">\n<style>\ntable { width: 100% }\nth { font:bold 10pt Tahoma; }\ntd { font:normal 10pt Tahoma; }\nh1 {font:normal 11pt Tahoma;}\n</style>\n</head>\n<body>\n<h1>" + 
       
       new Date() + "</h1>\n" + 
       "<table border=\"0\" cellpadding=\"5\" cellspacing=\"3\">\n" + "<tr align=\"left\">\n" + 

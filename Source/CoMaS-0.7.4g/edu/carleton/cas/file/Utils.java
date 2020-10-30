@@ -113,7 +113,7 @@ public class Utils {
   public static File getAndStoreURL(URL url, File targetDir) throws IOException {
     String name = (new File(url.getFile())).getName();
     Logger.output("Saved " + name + " in " + targetDir);
-    BufferedInputStream in = new BufferedInputStream(url.openStream(), 65536);
+    InputStream in = new BufferedInputStream(url.openStream(), 65536);
     File file = new File(targetDir, name);
     OutputStream out = new BufferedOutputStream(new FileOutputStream(file));
     copyInputStream(in, out);
@@ -198,9 +198,7 @@ public class Utils {
     try {
       URL url = new URL(sURL);
       URLConnection conn = url.openConnection();
-      InputStream is = conn.getInputStream();
-      properties.load(is);
-      is.close();
+      properties.load(conn.getInputStream());
     } catch (MalformedURLException e) {
       Logger.debug(Level.WARNING, "UTILS " + sURL + ":" + e.getMessage());
     } catch (IOException e) {
@@ -215,9 +213,7 @@ public class Utils {
       URL url = new URL(sURL);
       URLConnection conn = url.openConnection();
       ByteArrayOutputStream bos = new ByteArrayOutputStream(65536);
-      InputStream is = conn.getInputStream();
-      CryptoUtils.decrypt(key, is, bos);
-      is.close();
+      CryptoUtils.decrypt(key, conn.getInputStream(), bos);
       properties.load(new ByteArrayInputStream(bos.toByteArray()));
     } catch (MalformedURLException e) {
       Logger.debug(Level.WARNING, "UTILS " + sURL + ":" + e.getMessage());

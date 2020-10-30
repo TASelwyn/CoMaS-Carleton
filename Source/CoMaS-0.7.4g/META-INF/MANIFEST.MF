@@ -17,9 +17,9 @@ Rsrc-Class-Path: ./ mimepull-1.9.7.jar jmf.jar bluecove-2.1.2.jar blueco
  .4.19.v20190610.jar jetty-server-9.4.19.v20190610.jar jetty-servlet-9.4
  .19.v20190610.jar jetty-http-9.4.19.v20190610.jar jetty-io-9.4.19.v2019
  0610.jar jetty-util-9.4.19.v20190610.jar tyrus-standalone-client-1.15.j
- ar sd.jar bridj-0.7-20140918-2.jar webcam-capture-0.3.13-20200330.20235
- 1-7.jar CoMaS-Module-Base-0.6.0.jar slf4j-simple-1.7.29.jar core-3.4.0.
- jar javase-3.4.0.jar
-Rsrc-Main-Class: edu.carleton.cas.application.Launcher
+ ar sd.jar CoMaS-Module-Base-0.6.0.jar slf4j-simple-1.7.29.jar core-3.4.
+ 0.jar javase-3.4.0.jar bridj-0.7-20140918-2.jar webcam-capture-0.3.13-2
+ 0200330.202351-7.jar
+Rsrc-Main-Class: edu.carleton.cas.ui.Exam
 Class-Path: .
 

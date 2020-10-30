@@ -7,9 +7,9 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 
 public class Logger {
-  private static boolean DEBUG = false;
-  
   private static java.util.logging.Logger logger;
+  
+  private static boolean DEBUG = false;
   
   public static void setup(Class<?> clazz, String name, String systemLogDir, Level level) throws IOException {
     if (logger == null) {

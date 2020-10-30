@@ -33,17 +33,17 @@ public class ClientConfiguration {
   public void remove() {
     File f = new File(this.name);
     File dir = f.getParentFile();
-    File[] loginDotJar = dir.listFiles(new FileFilter() {
+    File[] comasDotJar = dir.listFiles(new FileFilter() {
           public boolean accept(File file) {
             String name = file.getName();
-            if (name.equals("Login.jar"))
+            if (name.equals("CoMaS.jar"))
               return false; 
-            return (name.startsWith("Login") && name.endsWith(".jar"));
+            return (name.startsWith("CoMaS") && name.endsWith(".jar"));
           }
         });
-    if (loginDotJar != null)
-      for (int i = 0; i < loginDotJar.length; i++)
-        loginDotJar[i].deleteOnExit();  
+    if (comasDotJar != null)
+      for (int i = 0; i < comasDotJar.length; i++)
+        comasDotJar[i].deleteOnExit();  
   }
   
   public boolean load() {
@@ -51,6 +51,12 @@ public class ClientConfiguration {
     if (p == null)
       return false; 
     this.configuration = p;
+    if (this.configuration.containsKey("first_name"))
+      Shared.STUDENT_FIRST_NAME = this.configuration.getProperty("first_name").trim(); 
+    if (this.configuration.containsKey("last_name"))
+      Shared.STUDENT_LAST_NAME = this.configuration.getProperty("last_name").trim(); 
+    if (this.configuration.containsKey("id"))
+      Shared.STUDENT_ID = this.configuration.getProperty("id").trim(); 
     return !this.configuration.isEmpty();
   }
   

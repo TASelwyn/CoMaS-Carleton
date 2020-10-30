@@ -8,6 +8,8 @@ import java.util.Properties;
 import java.util.logging.Level;
 
 public class Shared {
+  public static final String ACTUAL_VERSION_OF_CLIENT = "0.7.5";
+  
   public static final String LOCATION_STATE = "LOCATION";
   
   public static final String START_STATE = "START";
@@ -125,8 +127,6 @@ public class Shared {
   public static String WEBSOCKET_HOST = "comas.cogerent.com";
   
   public static String COMAS_DOT_INI = "comas.ini";
-  
-  public static String COMAS_DOT_JAR_FORMAT = "CoMaS-%s.jar";
   
   public static String examDotIni(String host) {
     if (host.startsWith("https://"))
@@ -353,11 +353,11 @@ public class Shared {
   
   public static int LOG_GENERATION_FREQUENCY = 10;
   
-  public static final String LOG_FILE_BASE = "comas-launcher";
+  public static final String LOG_FILE_BASE = "comas-system";
   
   public static final String LOG_FILE_ENDING = "-log.html";
   
-  public static final String LOG_FILE_NAME = "comas-launcher-log.html";
+  public static final String LOG_FILE_NAME = "comas-system-log.html";
   
   public static final String SESSION_FILE_NAME = ".es";
   
@@ -381,17 +381,13 @@ public class Shared {
   
   public static final String KEY_ACTIVITY = "activity";
   
-  public static final String KEY_VERSION = "version";
-  
-  public static final String KEY_APPLICATION_CLASS = "application.class";
-  
-  public static final String KEY_APPLICATION_METHOD = "application.method";
-  
   public static boolean AUTO_ARCHIVE = true;
   
   public static int AUTO_ARCHIVE_FREQUENCY = 20;
   
   public static int ABSOLUTE_MAX_INTERVAL = 60;
+  
+  public static int ABSOLUTE_MIN_INTERVAL = 1;
   
   public static int MAX_INTERVAL = 50;
   
@@ -409,9 +405,9 @@ public class Shared {
   
   public static int MIN_MSECS_BETWEEN_USER_UPLOADS = 300000;
   
-  public static int RETRY_TIME = 10000;
+  public static int RETRY_TIME = 20000;
   
-  public static int FREQUENCY_TO_CHECK_EXAM_DIRECTORY = 15;
+  public static int FREQUENCY_TO_CHECK_EXAM_DIRECTORY = 900000;
   
   public static int MIN_EVENTS_IN_EXAM_DIRECTORY = 0;
   
@@ -424,6 +420,8 @@ public class Shared {
   public static final String LOGGED_OUT = "Logged out";
   
   public static final String UNKNOWN = "Unknown";
+  
+  public static final String ISSUE = "Issue:";
   
   public static final String PROBLEM_WEBCAM = "Issue:Webcam";
   
@@ -450,8 +448,6 @@ public class Shared {
   public static final String IMAGE_FORMAT = "jpg";
   
   public static String VERSION = "0.7.5";
-  
-  public static String DEFAULT_COMAS_DOT_JAR = String.format(COMAS_DOT_JAR_FORMAT, new Object[] { VERSION });
   
   public static String PASSKEY_DIRECTORY = "SimpleDirectory";
   
@@ -588,40 +584,34 @@ public class Shared {
   
   public static boolean SCREEN_SHOT_TIMESTAMP_REQUIRED = true;
   
+  public static float SCREEN_SHOT_TIMESTAMP_HEIGHT = 0.0F;
+  
+  public static float SCREEN_SHOT_TIMESTAMP_WIDTH = 0.5F;
+  
   public static int MAX_SUPPORTED_JAVA_VERSION = 20;
   
   public static int MIN_SUPPORTED_JAVA_VERSION = 8;
   
-  public static int MIN_DRIVE_SPACE_THRESHOLD_PERCENTAGE = 0;
+  public static int MIN_DRIVE_SPACE_THRESHOLD_PERCENTAGE = 5;
   
-  public static int MIN_DRIVE_SPACE_THRESHOLD_MB = 0;
+  public static int MIN_DRIVE_SPACE_THRESHOLD_MB = 2000;
   
-  public static boolean VERIFY_CODE_SIGNATURE = false;
+  public static String SUPPORT_MESSAGE = "";
   
-  public static boolean CODE_MUST_BE_SIGNED = false;
-  
-  public static String PUBLIC_KEY;
-  
-  public static String HASH_OF_APPLICATION_JAR;
+  public static String STARTUP_MESSAGE = "";
   
   public static Properties getLoginProperties(String course) {
     Properties configs = Utils.getProperties(LOGIN_CONFIGURATION_URL);
     if (configs == null) {
       configs = new Properties();
     } else {
-      HASH_OF_APPLICATION_JAR = Utils.getStringOrDefault(configs, "application.hash", "");
-      COMAS_DOT_JAR_FORMAT = Utils.getStringOrDefault(configs, "application.name", "CoMaS-%s.jar");
-      VERIFY_CODE_SIGNATURE = Utils.getBooleanOrDefault(configs, "application.verify", false);
-      if (VERIFY_CODE_SIGNATURE) {
-        PUBLIC_KEY = Utils.getStringOrDefault(configs, "application.public_key", "");
-      } else {
-        PUBLIC_KEY = null;
-      } 
-      CODE_MUST_BE_SIGNED = Utils.getBooleanOrDefault(configs, "application.signed", false);
+      String logging_level;
+      SUPPORT_MESSAGE = Utils.getStringOrDefault(configs, "application.support.message", "Please contact support.");
+      STARTUP_MESSAGE = Utils.getStringOrDefault(configs, "application.startup.message", "");
       MIN_DRIVE_SPACE_THRESHOLD_PERCENTAGE = Utils.getIntegerOrDefaultInRange(configs, 
           "min_free_drive_space_percentage", MIN_DRIVE_SPACE_THRESHOLD_PERCENTAGE, 0, 5);
       MIN_DRIVE_SPACE_THRESHOLD_MB = Utils.getIntegerOrDefaultInRange(configs, "min_free_drive_space_mb", 
-          MIN_DRIVE_SPACE_THRESHOLD_MB, 0, 5000);
+          MIN_DRIVE_SPACE_THRESHOLD_MB, 0, 2000);
       MAX_SUPPORTED_JAVA_VERSION = Utils.getIntegerOrDefaultInRange(configs, "max_supported_java_version", 
           MAX_SUPPORTED_JAVA_VERSION, 8, 100);
       MIN_SUPPORTED_JAVA_VERSION = Utils.getIntegerOrDefaultInRange(configs, "min_supported_java_version", 
@@ -629,9 +619,15 @@ public class Shared {
       AUTO_ARCHIVE = Utils.getBooleanOrDefault(configs, "auto_archive", AUTO_ARCHIVE);
       AUTO_ARCHIVE_FREQUENCY = Utils.getIntegerOrDefaultInRange(configs, "auto_archive_frequency", 
           AUTO_ARCHIVE_FREQUENCY, 0, 100);
+      if (!AUTO_ARCHIVE)
+        AUTO_ARCHIVE_FREQUENCY = Integer.MAX_VALUE; 
       LOG_GENERATION_FREQUENCY = Utils.getIntegerOrDefaultInRange(configs, "log_generation_frequency", 
           LOG_GENERATION_FREQUENCY, 1, 2147483647);
-      String logging_level = Utils.getStringOrDefault(configs, "logs.level", "INFO");
+      if (configs.contains("logging_level")) {
+        logging_level = configs.getProperty("logging_level");
+      } else {
+        logging_level = Utils.getStringOrDefault(configs, "logs.level", "INFO");
+      } 
       try {
         LOGGING_LEVEL = Level.parse(logging_level);
       } catch (IllegalArgumentException e) {
@@ -668,6 +664,8 @@ public class Shared {
         USE_WEB_CAM_ON_SCREEN_SHOT = false; 
       SCREEN_SHOT_QR_CODE_REQUIRED = Utils.getBooleanOrDefault(configs, "monitoring.screenshots.qr_code", false);
       SCREEN_SHOT_TIMESTAMP_REQUIRED = Utils.getBooleanOrDefault(configs, "monitoring.screenshots.timestamp", false);
+      SCREEN_SHOT_TIMESTAMP_HEIGHT = Utils.getIntegerOrDefaultInRange(configs, "screenshot.timestamp.height", 0, 0, 100) / 100.0F;
+      SCREEN_SHOT_TIMESTAMP_WIDTH = Utils.getIntegerOrDefaultInRange(configs, "screenshot.timestamp.width", 50, 0, 100) / 100.0F;
       NETWORK_MONITORING = Utils.getBooleanOrDefault(configs, "monitoring.network.required", true);
       FILE_MONITORING = Utils.getBooleanOrDefault(configs, "monitoring.file.required", true);
       PROCESS_MONITORING = Utils.getBooleanOrDefault(configs, "monitoring.process.required", false);
