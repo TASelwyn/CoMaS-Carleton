@@ -23,9 +23,3 @@ public class ApplicationHash {
     System.out.println(hash);
   }
 }
-
-
-/* Location:              C:\Users\Thomas\Desktop\Gamer Chair\CoMaS\CoMaS-Launcher-0.7.5\!\edu\carleton\cas\security\ApplicationHash.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */

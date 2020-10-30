@@ -102,9 +102,3 @@ public class JarRsrcLoader {
     return result.<String>toArray(new String[result.size()]);
   }
 }
-
-
-/* Location:              C:\Users\Thomas\Desktop\Gamer Chair\CoMaS\CoMaS-Launcher-0.7.5\!\org\eclipse\jdt\internal\jarinjarloader\JarRsrcLoader.class
- * Java compiler version: 1 (45.3)
- * JD-Core Version:       1.1.3
- */

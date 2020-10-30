@@ -25,9 +25,3 @@ public class RsrcURLConnection extends URLConnection {
     return result;
   }
 }
-
-
-/* Location:              C:\Users\Thomas\Desktop\Gamer Chair\CoMaS\CoMaS-Launcher-0.7.5\!\org\eclipse\jdt\internal\jarinjarloader\RsrcURLConnection.class
- * Java compiler version: 1 (45.3)
- * JD-Core Version:       1.1.3
- */

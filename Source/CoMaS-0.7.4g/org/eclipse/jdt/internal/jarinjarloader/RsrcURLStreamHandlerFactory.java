@@ -24,9 +24,3 @@ public class RsrcURLStreamHandlerFactory implements URLStreamHandlerFactory {
     this.chainFac = fac;
   }
 }
-
-
-/* Location:              C:\Users\Thomas\Desktop\Gamer Chair\CoMaS\CoMaS-Launcher-0.7.5\!\org\eclipse\jdt\internal\jarinjarloader\RsrcURLStreamHandlerFactory.class
- * Java compiler version: 1 (45.3)
- * JD-Core Version:       1.1.3
- */

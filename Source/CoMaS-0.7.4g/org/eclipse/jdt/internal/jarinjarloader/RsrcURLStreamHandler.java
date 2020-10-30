@@ -32,9 +32,3 @@ public class RsrcURLStreamHandler extends URLStreamHandler {
     setURL(url, "rsrc", "", -1, null, null, file, null, null);
   }
 }
-
-
-/* Location:              C:\Users\Thomas\Desktop\Gamer Chair\CoMaS\CoMaS-Launcher-0.7.5\!\org\eclipse\jdt\internal\jarinjarloader\RsrcURLStreamHandler.class
- * Java compiler version: 1 (45.3)
- * JD-Core Version:       1.1.3
- */
