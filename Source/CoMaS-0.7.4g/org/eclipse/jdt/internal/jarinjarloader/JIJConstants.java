@@ -27,7 +27,7 @@ final class JIJConstants {
 }
 
 
-/* Location:              C:\Users\Thomas\Desktop\Gamer Chair\CoMaS\CoMaS-0.7.4g\!\org\eclipse\jdt\internal\jarinjarloader\JIJConstants.class
+/* Location:              C:\Users\Thomas\Desktop\Gamer Chair\CoMaS\CoMaS-Launcher-0.7.5\!\org\eclipse\jdt\internal\jarinjarloader\JIJConstants.class
  * Java compiler version: 1 (45.3)
  * JD-Core Version:       1.1.3
  */
