@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+      <title>CoMaS Web Cam</title>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+  </head>
+  <body>
+       <script>
+var video_host = "comas.cogerent.com";
+var log_host = "comas.cogerent.com";
+var activity = "Exam-Nov-8";
+var ws_protocol = "wss";
+var description = ""; // student ID
+var type = "Login";
+var EMAIL = "firstname.lastname@carleton.ca";
+var url = "https://comas.cogerent.com:8443/COMP4601-Video/rest/logger/video/ECOR1047A/Exam-Nov-8/firstname lastname";
+var COURSE = "ECOR1047A";
+var protocol = "https";
+var upload_host = "comas.cogerent.com";
+var PASSWORD = ""; // <--- there was a 16-digit number value here
+var directory_host = "comas.cogerent.com";
+var port = 8443;
+var name = "firstname lastname";
+var course = "ECOR1047A";
+var cms_host = "comas.cogerent.com";
+var expiry = 1604091853608;
+var ID = ""; // student ID
+        
+          //var windowFeatures = "menubar=no,location=no,toolbar=no,resizable=no,scrollbars=no,status=no";
+          var windowFeatures = "width=300,height=150";
+          var windowObjectReference;
+          var me = name.replace(/ /g,"-")+'-'+ID;
+          const url2use = protocol+"://"+video_host+":"+port+'/COMP4601-Video/rest/logger/webcam/' + course + "/" + activity + "/" + me;
+          
+          function openWindow() {
+            windowObjectReference = window.open(url2use, "CoMaS Web Cam", windowFeatures);
+            windowObjectReference.focus();
+          }
+        </script>
+        <div style="text-align:center">
+          <br/>
+          <img id="comas"></img>
+          <br/>
+          <p id="h1"></p>
+          <p id="h2"></p>
+          <br/>
+        <input type="button" onclick="openWindow();" value="Open Webcam"/>
+        </div>
+      </div>
+      <script>
+        var img = document.getElementById("comas");
+        img.src = protocol+"://"+video_host+":"+port+"/CMS/rest/images/social-sharing-icon-128x128.png";
+        h1.innerHTML = course + "/" + activity;
+        h2.innerHTML = name;
+      </script>
+        
+      </div>
+  </body>
+</html>

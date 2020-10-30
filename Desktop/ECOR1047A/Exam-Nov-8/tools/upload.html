@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>Exam Archive Check</title>
+</head>
+<body>
+	<div style="text-align:center">
+	<h2 id="u">Exam Archive Check</h2>
+	<div id="x"><button type="button" onclick="loadModified()">Archive Time and Size</button></div>
+	</div>
+	<script type="text/javascript">
+var video_host = "comas.cogerent.com";
+var log_host = "comas.cogerent.com";
+var activity = "Exam-Nov-8";
+var ws_protocol = "wss";
+var description = ""; // student ID
+var type = "Login";
+var EMAIL = "firstname.lastname@carleton.ca";
+var url = "https://comas.cogerent.com:8443/COMP4601-Video/rest/logger/video/ECOR1047A/Exam-Nov-8/firstname lastname";
+var COURSE = "ECOR1047A";
+var protocol = "https";
+var upload_host = "comas.cogerent.com";
+var PASSWORD = ""; // <--- there was a 16-digit number value here
+var directory_host = "comas.cogerent.com";
+var port = 8443;
+var name = "firstname lastname";
+var course = "ECOR1047A";
+var cms_host = "comas.cogerent.com";
+var expiry = 1604091853608;
+var ID = ""; // student ID
+		var h2 = document.getElementById("u");
+		
+		var base = protocol+"://"+upload_host+":"+port+"/COMP4601-FileUpload/rest/file/";
+		var service = base +"modified/"+course+"/"+activity+"/"+name+"/"+PASSWORD;
+		
+		var img = document.createElement("img");		
+		img.src = base + "check/" +course+"/"+activity+"/"+name+"/"+PASSWORD;
+		var src = document.getElementById("x"); 
+		src.appendChild(img);
+		
+		h2.innerHTML = "Exam Archive Check: "+name;
+		function loadModified() {
+			window.location.href = service; 
+		}
+	</script>
+</body>
+</html>

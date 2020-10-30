@@ -19,14 +19,14 @@ which is in login.ini (line 127), version=0.7.4g
 - Checks clipboard activity periodically.
 - Collects hardware details. (Such as your mac address)
 - Collects background resource usage stats
-- Enable audio/video monitoring (Which is configurable to be optional or mandatory)
+- Enable audio/video monitoring (Which is configurable to be optional or mandatory, uploads every 10s)
 
 It does NOT check browser data
 And it's only running when you open it to do the exam. It's not a rootkit, you monkey.
 
 # Links
 
-Professor that seems to of made it:
+Professor that seemingly made CoMaS:
 https://carleton.ca/scs/people/tony-white/
 - CoMaS server runs on cogerent, which is his domain.
 - Windows executable has him as the publisher.
@@ -34,19 +34,24 @@ https://carleton.ca/scs/people/tony-white/
 - According to some students, a libray tony uses extensively, being Jersey REST Library in his web services coruse. It's also used a lot in CoMaS. Jersey REST is dying, old tech.
 
 A list of links used by CoMaS. 
+
 Main domain used: https://comas.cogerent.com:8443
+
 Main Executables:
 - https://comas.cogerent.com:8443/CMS/rest/exam/CoMaS-Launcher-0.7.5.jar
 - https://comas.cogerent.com:8443/CMS/rest/exam/CoMaS-0.7.4g.jar
 
 
 Some configuration files:
+
 https://comas.cogerent.com:8443/CMS/rest/exam/exam.ini
 https://comas.cogerent.com:8443/CMS/rest/exam/login.ini
 
 
 Funny/stupid links
+
 https://comas.cogerent.com:8443/COMP4601-Directory/login.html
+
 Seriously.. comp4601 directory. Probably from copy pasting students work as a login page. lol.
 https://comas.cogerent.com:8443/CMS/rest/tools//server.jade
 Seems to be an admin panel, not entirely sure.
@@ -61,10 +66,36 @@ Seems to be an admin panel, not entirely sure.
 Windows registry checking --->
 
 (Launcher "utility\WindowsRegistry.class" accesses two values from your current logged in user, one of them is your Documents folder, the other is your Desktop)
-"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", "Personal");
+- "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", "Personal");
+- "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", "Desktop");
 
-"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", "Desktop");
+
 
 VM Detection ---> 
+
 CoMaS-0.7.4g inside "resources"\VMCheck.class and VMCheckTask.class
 
+
+
+Webcam capture --->
+
+https://comas.cogerent.com:8443/COMP4601-Video/rest/logger/webcam/ECOR1047A/Exam-Nov-8/firstname-lastname-studentID
+
+Seemingly has no no verification to make sure you are that person... smh.
+
+I was able to run the page with CoMaS turned off, and no cookies associated with the browser session for the website.
+
+Yet it was giving me responses saying "Image saved for firstname-lastname-studentID"
+
+On your desktop, it makes a "CoMaS" folder, then a subfolder for the course, and then exam date, and "tools". Inside that, there's a webcam.html file that CoMaS opens to open the main webcam logger page, linked above.
+
+Inside that webcam.html file, there's email, course, student name, password and everything. But as far as I can tell, that's not being used.
+ 
+ 
+ 
+Desktop capture -->
+C:/Users/Thomas/Desktop/CoMaS/ECOR1047A/Exam-Nov-8/tools/upload.html
+
+Seems to just upload screenshots of your primary/secondary monitor to them. Even though I have a third monitor, that was never captured. Smh.
+
+According to the login.ini, the interval has a changeable min/max.  Around 30s or so.
