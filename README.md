@@ -24,9 +24,40 @@ which is in login.ini (line 127), version=0.7.4g
 It does NOT check browser data
 And it's only running when you open it to do the exam. It's not a rootkit, you monkey.
 
+# Links
+
+Professor that seems to of made it:
+https://carleton.ca/scs/people/tony-white/
+- CoMaS server runs on cogerent, which is his domain.
+- Windows executable has him as the publisher.
+- Apparently some students have talked to him about CoMaS extensively.
+- According to some students, a libray tony uses extensively, being Jersey REST Library in his web services coruse. It's also used a lot in CoMaS. Jersey REST is dying, old tech.
+
+A list of links used by CoMaS. 
+Main domain used: https://comas.cogerent.com:8443
+Main Executables:
+- https://comas.cogerent.com:8443/CMS/rest/exam/CoMaS-Launcher-0.7.5.jar
+- https://comas.cogerent.com:8443/CMS/rest/exam/CoMaS-0.7.4g.jar
+
+
+Some configuration files:
+https://comas.cogerent.com:8443/CMS/rest/exam/exam.ini
+https://comas.cogerent.com:8443/CMS/rest/exam/login.ini
+
+
+Funny/stupid links
+https://comas.cogerent.com:8443/COMP4601-Directory/login.html
+Seriously.. comp4601 directory. Probably from copy pasting students work as a login page. lol.
+https://comas.cogerent.com:8443/CMS/rest/tools//server.jade
+Seems to be an admin panel, not entirely sure.
+
+
+
+
 
 
 # Validation && Extra rambling/proof
+
 Windows registry checking --->
 
 (Launcher "utility\WindowsRegistry.class" accesses two values from your current logged in user, one of them is your Documents folder, the other is your Desktop)
