@@ -12,11 +12,11 @@ which is in login.ini (line 127), version=0.7.4g
 
 # Capabilities (Exam Invigilator/E Proctor)
 
-- VM Detection (pretty loose/relatively easy vm detection bypass)
+- VM Detection (pretty loose/relatively simple vm detection... very easy to bypass)
 - Windows Registry Checking (Specifically to look for your Documents & your Desktop folder of the current user)
 - Random screenshots/webcam captures (Active computer, stores them on your desktop in a "CoMaS" folder iirc)
 - All wifi/ethernet/bluetooth activity on your computer (with some of the dumbest checks to see if it's illegal activity or not.)
-- Checks clipboard activity periodically.
+- Checks clipboard activity periodically. (Just copy the entire bee movie script and it'll probably overload your connection to CoMaS lol)
 - Collects hardware details. (Such as your mac address)
 - Collects background resource usage stats
 - Enable audio/video monitoring (Which is configurable to be optional or mandatory, uploads every 10s)
@@ -29,9 +29,9 @@ And it's only running when you open it to do the exam. It's not a rootkit, you m
 Professor that seemingly made CoMaS:
 https://carleton.ca/scs/people/tony-white/
 - CoMaS server runs on cogerent, which is his domain.
-- Windows executable has him as the publisher.
+- Windows executable's publisher is "Tony White"
 - Apparently some students have talked to him about CoMaS extensively.
-- According to some students, a libray tony uses extensively, being Jersey REST Library in his web services coruse. It's also used a lot in CoMaS. Jersey REST is dying, old tech.
+- According to some students, a libray tony uses extensively, being Jersey REST Library in his web services course. It's also used a lot in CoMaS. Jersey REST is dying, old tech.
 
 A list of links used by CoMaS. 
 
@@ -39,12 +39,13 @@ Main domain used: https://comas.cogerent.com:8443
 
 Main Executables:
 - https://comas.cogerent.com:8443/CMS/rest/exam/CoMaS-Launcher-0.7.5.jar
-- https://comas.cogerent.com:8443/CMS/rest/exam/CoMaS-0.7.4g.jar
+- https://comas.cogerent.com:8443/CMS/rest/exam/CoMaS-0.7.4ga.jar
 
 
 Some configuration files:
 
 https://comas.cogerent.com:8443/CMS/rest/exam/exam.ini
+
 https://comas.cogerent.com:8443/CMS/rest/exam/login.ini
 
 
@@ -73,7 +74,7 @@ Windows registry checking --->
 
 VM Detection ---> 
 
-CoMaS-0.7.4g inside "resources"\VMCheck.class and VMCheckTask.class
+CoMaS-0.7.4ga inside \resources\VMCheck.java and VMCheckTask.java
 
 
 
@@ -81,7 +82,7 @@ Webcam capture --->
 
 https://comas.cogerent.com:8443/COMP4601-Video/rest/logger/webcam/ECOR1047A/Exam-Nov-8/firstname-lastname-studentID
 
-Seemingly has no no verification to make sure you are that person... smh.
+Seemingly has no verification to make sure you are that person... smh.
 
 I was able to run the page with CoMaS turned off, and no cookies associated with the browser session for the website.
 
