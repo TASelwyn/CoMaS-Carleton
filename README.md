@@ -1,14 +1,7 @@
 # CoMaS-Carleton
 CoMaS client setup, no eula, no tos. Can't say it's illegal to redistribute if there's nothing saying against it.
 
-
-From what I've looked into it so far CoMaS-Launcher-0.7.5, downloads a exam.ini file and a login.ini file, then downloads CoMaS-0.7.4g...
-
-which is in login.ini (line 127), version=0.7.4g
-
-
-... more later
-
+Some bullshit Exam Invigilator... idk man, I feel bad for students who have to use this spyware
 
 # Capabilities (Exam Invigilator/E Proctor)
 
@@ -39,7 +32,7 @@ Main domain used: https://comas.cogerent.com:8443
 
 Main Executables:
 - https://comas.cogerent.com:8443/CMS/rest/exam/CoMaS-Launcher-0.7.5.jar
-- https://comas.cogerent.com:8443/CMS/rest/exam/CoMaS-0.7.4ga.jar
+- https://comas.cogerent.com:8443/CMS/rest/exam/CoMaS-0.7.5.jar
 
 
 Some configuration files:
